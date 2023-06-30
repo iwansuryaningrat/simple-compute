@@ -10,14 +10,18 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-    let a = 0;
-    for (let i = 0; i < 1000000000; i++)  a = a + i;
-    
-    res.send({
-        message: "Looping done!",
-        result: a
-    })
-    
+  const startTime = new Date().getTime();
+  let a = 0;
+  for (let i = 0; i < 1000000; i++)  a = a + i;
+
+  const endTime = new Date().getTime();
+
+  res.send({
+    message: "Looping done!",
+    result: a,
+    time: endTime - startTime,
+  })
+
 });
 
 const PORT = 8080;
